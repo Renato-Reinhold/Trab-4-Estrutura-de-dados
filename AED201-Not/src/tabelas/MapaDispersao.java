@@ -1,5 +1,7 @@
 package tabelas;
 
+import java.util.Arrays;
+
 public class MapaDispersao<K, T> {
 
 	private Lista<K, T>[] tabela;
@@ -20,11 +22,37 @@ public class MapaDispersao<K, T> {
 	}
 	
 	private int caucularHash(K chave) {
-		return 0;
+		return (chave.hashCode() & 0x7fffffff) % tabela.length;
 	}
 	
 	public boolean inserir(K chave, T dado) {
-		return false;
+		int hash = caucularHash(chave);
+		Lista<K, T> list = tabela[hash];
+		
+		if(list != null) {
+			while(list.getProx() != null) {
+				if(list.getChave().equals(chave)) {
+					return false;
+				}
+				list = list.getProx();
+			}
+			Lista<K, T> proxLista = new Lista<K, T>();
+			proxLista.setChave(chave);
+			proxLista.setValor(dado);
+			list.setProx(proxLista);
+		}
+		
+		if(list == null) {
+			list = new Lista<K, T>();
+			list.setChave(chave);
+			list.setValor(dado);
+		}
+		
+		if(tabela[hash] == null) {
+			tabela[hash] = list;
+		}
+		
+		return true;
 	}
 	
 	public T remover(K chave) {
@@ -45,7 +73,7 @@ public class MapaDispersao<K, T> {
 		return numero;
 	}
 	
-	private static boolean isPrimo(int numero) {
+	private boolean isPrimo(int numero) {
         for (int j = 2; j < numero; j++) {
             if (numero % j == 0)
                 return false;   
@@ -53,8 +81,8 @@ public class MapaDispersao<K, T> {
         return true;
     }
 	
-	public int aaa() {
-		return this.tabela.length;
+	public String imprimir() {
+		return Arrays.asList(tabela).toString();
 	}
 	
 }

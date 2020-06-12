@@ -3,16 +3,8 @@ package tabelas;
 public class Lista<K, T>{
 
 	private K chave;
-	private T valor;
+	private T dado;
 	private Lista<K,T> prox;
-	
-	public boolean inserir(K chave, T valor) {
-		return false;
-	}
-	
-	public T remover(K chave) {
-		return null;
-	}
 
 	public K getChave() {
 		return chave;
@@ -23,11 +15,11 @@ public class Lista<K, T>{
 	}
 
 	public T getValor() {
-		return valor;
+		return dado;
 	}
 
-	public void setValor(T valor) {
-		this.valor = valor;
+	public void setValor(T dado) {
+		this.dado = dado;
 	}
 
 	public Lista<K, T> getProx() {
@@ -36,5 +28,10 @@ public class Lista<K, T>{
 
 	public void setProx(Lista<K, T> prox) {
 		this.prox = prox;
+	}
+	
+	@Override
+	public String toString() {
+		return "["+chave.toString()+"] = " + dado + ((prox != null) ? " | " + prox.toString() : "\n");
 	}
 }
