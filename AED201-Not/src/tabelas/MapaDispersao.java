@@ -56,7 +56,20 @@ public class MapaDispersao<K, T> {
 	}
 	
 	public T remover(K chave) {
-		return null;
+		int hash = caucularHash(chave);
+		T dado = null;
+		Lista<K, T> lista = tabela[hash];
+
+		while(lista != null) {
+			if(lista.getChave().equals(chave)) {
+				dado = lista.getValor();
+				lista = null;
+			}
+			lista = lista.getProx();
+		}
+		
+		tabela[hash] = lista;
+		return dado;
 	}
 	
 	public T buscar (K chave) {

@@ -13,7 +13,11 @@ public class Main {
 		mapa.inserir("13", "4");
 		
 		System.out.println(mapa.imprimir());
-		
+
+		System.out.println(mapa.remover("2"));
+
+		System.out.println(mapa.imprimir());
+
 	}
 	
 }
