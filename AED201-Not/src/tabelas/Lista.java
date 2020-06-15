@@ -32,6 +32,6 @@ public class Lista<K, T>{
 	
 	@Override
 	public String toString() {
-		return "["+chave.toString()+"] = " + dado + ((prox != null) ? " | " + prox.toString() : "\n");
+		return "\n["+chave.toString()+"] = " + dado + ((prox != null) ? " | " + prox.toString() : "\n");
 	}
 }
