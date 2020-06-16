@@ -1,4 +1,4 @@
-package tabelas;  
+package tabelas;
 import java.util.Arrays;
 
 public class MapaDispersao<K, T> {
@@ -88,7 +88,6 @@ public class MapaDispersao<K, T> {
 	
 	public T buscar (K chave) {
 		int hash = caucularHash(chave);
-		T dado = null;
 		Lista<K, T> lista = tabela[hash];
 		if (lista != null && lista.getChave().equals(chave)) {
 			T valor = lista.getValor();
@@ -107,9 +106,14 @@ public class MapaDispersao<K, T> {
 	
 	public int quantosElementos() {
 		int numero = 0;
-		for (int i = 0; i<=this.tabela.length; i++) {
+		for (int i = 0; i<this.tabela.length; i++) {
 			if (this.tabela[i] != null) {
 				numero++;
+				Lista<K, T> lista = this.tabela[i];
+				while(lista.getProx() != null) {
+					numero++;
+					lista = lista.getProx();
+				}
 			}
 		}
 		return numero;
