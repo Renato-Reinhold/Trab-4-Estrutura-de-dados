@@ -3,16 +3,16 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		MapaDispersao<String,Veiculo> mp = new MapaDispersao(2000);
-
-		Veiculo v = new Veiculo();
-		v.setPlaca("AAA-0123");
-		v.setModelo("Hyundai Creta");
-		v.setAno(2017);
-		v.setProprietario("João da Silva");
-		mp.inserir(v.getPlaca(), v);
-
-		System.out.println(mp.imprimir());
+//		MapaDispersao<String,Veiculo> mp = new MapaDispersao(2000);
+//
+//		Veiculo v = new Veiculo();
+//		v.setPlaca("AAA-0123");
+//		v.setModelo("Hyundai Creta");
+//		v.setAno(2017);
+//		v.setProprietario("João da Silva");
+//		mp.inserir(v.getPlaca(), v);
+//
+//		System.out.println(mp.imprimir());
 
 //		mapa.inserir("1", "1");
 //		mapa.inserir("2", "2");
@@ -61,6 +61,22 @@ public class Main {
 //		System.out.println(mapa.imprimir());
 		
 //		System.out.println(mapa.buscar("4"));
+
+		MapaDispersao<String,String> mapa = new MapaDispersao(7);
+
+		mapa.inserir("1", "1");
+		mapa.inserir("2", "3");
+		mapa.inserir("9", "4");
+		mapa.inserir("6", "5");
+		mapa.inserir("23", "6");
+		mapa.inserir("4", "7");
+		mapa.inserir("0", "8");
+
+		System.out.println(mapa.buscar("9"));
+
+		System.out.println(mapa.remover("9"));
+
+		System.out.println(mapa.buscar("9"));
 
 	}
 	

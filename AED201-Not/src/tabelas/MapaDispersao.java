@@ -90,16 +90,16 @@ public class MapaDispersao<K, T> {
 		int hash = caucularHash(chave);
 		T dado = null;
 		Lista<K, T> lista = tabela[hash];
-		if (lista.getChave().equals(chave)) {
+		if (lista != null && lista.getChave().equals(chave)) {
 			T valor = lista.getValor();
 			return valor;
 		} else {
-			while(lista.getProx() != null) {
-				lista = lista.getProx();
+			while(lista != null) {
 				if (lista.getChave().equals(chave)) {
 					T valor = lista.getValor();
 					return valor;
 				}
+				lista = lista.getProx();
 			}
 		}
 		return null;
