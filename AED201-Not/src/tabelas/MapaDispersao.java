@@ -26,32 +26,29 @@ public class MapaDispersao<K, T> {
 	
 	public boolean inserir(K chave, T dado) {
 		int hash = caucularHash(chave);
+		boolean result = true;
 		Lista<K, T> list = tabela[hash];
-		
-		if(list != null) {
-			while(list.getProx() != null) {
-				if(list.getChave().equals(chave)) {
-					return false;
-				}
-				list = list.getProx();
-			}
-			Lista<K, T> proxLista = new Lista<K, T>();
-			proxLista.setChave(chave);
-			proxLista.setValor(dado);
-			list.setProx(proxLista);
-		}
-		
-		if(list == null) {
+
+		if(list == null) { //primeiro
 			list = new Lista<K, T>();
 			list.setChave(chave);
 			list.setValor(dado);
-		}
-		
-		if(tabela[hash] == null) {
 			tabela[hash] = list;
+		} else{
+			while (list != null) {
+				if (!list.getChave().equals(chave)) {
+					Lista<K, T> proxLista = new Lista<K, T>();
+					proxLista.setChave(chave);
+					proxLista.setValor(dado);
+					list.setProx(proxLista);
+				}else{
+					result = false;
+				}
+				list = list.getProx();
+			}
 		}
-		
-		return true;
+
+		return result;
 	}
 	
 	public T remover(K chave) {

@@ -47,11 +47,11 @@ public class Main {
 //
 //
 //		System.out.println(mapa.imprimir());
-//
+
 //		System.out.println("\nChave 2 removido: " + mapa.remover("2") +"\n");
-//
+
 //		System.out.println(mapa.imprimir());
-//
+
 //		System.out.println("\nChave 10 removida: " + mapa.remover("10") + "\n");
 //
 //		System.out.println(mapa.imprimir());
@@ -71,12 +71,20 @@ public class Main {
 		mapa.inserir("23", "6");
 		mapa.inserir("4", "7");
 		mapa.inserir("0", "8");
+		System.out.println(mapa.inserir("12", "8"));
+		System.out.println(mapa.inserir("12", "9"));
+		System.out.println(mapa.inserir("12", "10"));
+		System.out.println(mapa.inserir("12", "11"));
+
+		System.out.println(mapa.buscar("23"));
+
+//		mapa.remover("9");
 
 		System.out.println(mapa.buscar("9"));
 
-		System.out.println(mapa.remover("9"));
+		System.out.println(mapa.quantosElementos());
 
-		System.out.println(mapa.buscar("9"));
+		System.out.println(mapa.imprimir());
 
 	}
 	
