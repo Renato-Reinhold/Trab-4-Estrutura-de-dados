@@ -1,3 +1,5 @@
+//Mônica Luiza
+//Renato Muller Reinhold
 package tabelas;
 import java.util.Arrays;
 
@@ -26,7 +28,6 @@ public class MapaDispersao<K, T> {
 	
 	public boolean inserir(K chave, T dado) {
 		int hash = caucularHash(chave);
-		boolean result = true;
 		Lista<K, T> list = tabela[hash];
 
 		if(list == null) { //primeiro
@@ -35,20 +36,21 @@ public class MapaDispersao<K, T> {
 			list.setValor(dado);
 			tabela[hash] = list;
 		} else{
+			Lista<K, T> anterior = null;
 			while (list != null) {
-				if (!list.getChave().equals(chave)) {
-					Lista<K, T> proxLista = new Lista<K, T>();
-					proxLista.setChave(chave);
-					proxLista.setValor(dado);
-					list.setProx(proxLista);
-				}else{
-					result = false;
+				anterior = list;
+				if (list.getChave().equals(chave)) {
+					return false;
 				}
 				list = list.getProx();
 			}
+			Lista<K, T> proxLista = new Lista<K, T>();
+			proxLista.setChave(chave);
+			proxLista.setValor(dado);
+			anterior.setProx(proxLista);
 		}
 
-		return result;
+		return true;
 	}
 	
 	public T remover(K chave) {
